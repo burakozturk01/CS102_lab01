@@ -1,0 +1,17 @@
+/**
+ * Integer array controlling class
+ */
+public class IntBag 
+{
+   //properties
+   private int[] bag;
+   
+   //constructors
+   public IntBag()
+   {
+      bag = new int[4];
+   }
+   
+   //methods
+   
+}
