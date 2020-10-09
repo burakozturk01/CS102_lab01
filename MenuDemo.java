@@ -59,7 +59,7 @@ public class MenuDemo
                else if (value < 0)
                   System.out.println( "Value must be positive");
                
-            } while ( input2 != 0);
+            } while ( value != 0);
          }
          
          else if ( input == 3 && !isNull)
@@ -96,20 +96,9 @@ public class MenuDemo
          
          else if ( input == 6 && !isNull)
          {
-            int[] bag = fBag.getBag();
-            
             System.out.println( "What?");
             int value = scan.nextInt();
-            if ( value < 1)
-               System.out.println( "Value must be positive");
-            else
-            {
-               for ( int i = 0; i < bag.length; i++)
-               {
-                  if ( bag[i] == value)
-                     fBag.remove( i);
-               }
-            }
+            fBag.removeAll( value);
          }
          
          else if ( input == 7)

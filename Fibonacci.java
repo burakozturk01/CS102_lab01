@@ -28,7 +28,7 @@ public class Fibonacci
       for ( int i = 2; i < 40; i++)
          fBag.add( i, ( fBag.get( i - 1) + fBag.get( i - 2) ) );
       
-      System.out.println( fBag.toString());
+      System.out.println( fBag.toString() );
       
       
       System.out.println( "End.");

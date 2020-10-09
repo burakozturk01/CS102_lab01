@@ -14,64 +14,41 @@ public class IntBag
    }
    
    //methods
+   public void doubleSize()
+   {
+      int[] newBag = new int[2 * bag.length];
+      
+      for ( int i = 0; i < bag.length; i++)
+         newBag[i] = bag[i];
+      
+      bag = newBag;
+   }
+   
    public int add( int index, int value)
    {
-      int l = 0;
-      for ( int i = 0; i < bag.length; i++)
+      if ( index < 0)
+         return -1;
+      else if ( index >= bag.length || bag[bag.length - 1] == -1)
       {
-         if ( bag[i] == -1)
-         {
-            l = i;
-            i = bag.length;
-         }
-      }
-      System.out.println( "l = " + l);
-      
-      if ( index < bag.length)
-      {
-         if( index == l)
-         {
-            bag[index + 1] = bag[index];
-            bag[index] = value;
-            
-            return index;
-         }
-         
-         else if ( index < l && bag.length > l + 1)
-         {
-            for ( int i = l; i < index; i++)
-            {
-               bag[i + 1] = bag[i];
-               System.out.println( "i = " + i);
-            }
-            
-            bag[index] = value;
-            return index;
-         }
-         
-         else
-         {
-            int[] newBag = new int[bag.length * 2];
-         
-            for ( int i = 0; i < bag.length; i++)
-               newBag[i] = bag[i];
-            
-            bag = newBag;
-            
-            return add( index, value);
-         }
+         doubleSize();
+         return add( index, value);
       }
       
       else
       {
-         int[] newBag = new int[bag.length * 2];
+         int l = 0;
+         for ( int i = 0; i < bag.length - 1; i++)
+         {
+            if ( bag[i] == -1)
+               l = i;
+         }
          
-         for ( int i = 0; i < bag.length; i++)
-            newBag[i] = bag[i];
+         for ( int i = l; i >= index; i--)
+            bag[i + 1] = bag[i];
          
-         bag = newBag;
+         bag[index] = value;
          
-         return add( index, value);
+         return index;
       }
    }
    
@@ -135,11 +112,18 @@ public class IntBag
       return bag;
    }
    
-   public void removeAll()
+   public void removeAll( int value)
    {
-      for ( int i = 1; i < bag.length; i++)
-         bag[i] = 0;
-      bag[0] = -1;
+      if ( value <= 0)
+         System.out.println( "Value must be positive");
+      else
+      {
+         for ( int i = 0; i < bag.length; i++)
+         {
+            if ( bag[i] == value)
+               remove(i);
+         }
+      }
    }
    
    public String toString()

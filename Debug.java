@@ -18,7 +18,11 @@ public class Debug
       bag.add( 0, 3);
       bag.add( 1, 4);
       bag.add( 2, 7);
-      bag.add( 2, 5);
+      bag.add( 2, 3);
+      System.out.println( bag.toString() );
+      bag.add( 1, 6);
+      
+      bag.remove( 3);
       
       System.out.println( bag.toString() );
 
